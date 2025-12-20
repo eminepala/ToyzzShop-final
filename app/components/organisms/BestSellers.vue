@@ -59,7 +59,7 @@ const handleAddToCart = (item) => {
   };
   
   cartStore.addToCart(product);
-  alert(`${item.name} sepete eklendi!`);
+  // alert removed
 };
 
 const page = ref(0);

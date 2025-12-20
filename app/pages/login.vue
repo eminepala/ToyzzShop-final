@@ -6,6 +6,11 @@
          Ideally login page might use a 'minimal' layout or just override. 
          For now following exact user template which includes logo internally. -->
     
+    <!-- LOGO -->
+    <div class="logo-wrapper">
+      <img :src="logo" alt="Toyzz Shop Logo" class="logo" />
+    </div>
+    
     <!-- KART -->
     <div class="card">
 
@@ -57,8 +62,11 @@ import AtomLabel from '~/components/atoms/Label.vue'
 import { useAuthStore } from '~/stores/authStore'
 
 const authStore = useAuthStore()
+const router = useRouter() // Ensure router is available if needed, though previously I might have missed adding it to script but added it to template? No, I added it to Header. Login uses navigateTo? Step 303 showing script.
+// Wait, I need to check if I have imports for URL. URL is global.
 const email = ref('')
 const password = ref('')
+const logo = new URL("../../src/assets/images/logo.png", import.meta.url).href
 
 const handleLogin = async () => {
     await authStore.login(email.value, password.value)

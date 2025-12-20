@@ -3,7 +3,11 @@ import type { ICartItem, IProduct } from '~/types'
 
 export const useCartStore = defineStore('cart', {
     state: () => ({
-        items: [] as ICartItem[]
+        items: [] as ICartItem[],
+        notification: {
+            visible: false,
+            message: ''
+        }
     }),
     getters: {
         totalPrice: (state) => state.items.reduce((total, item) => total + (item.product.price * item.quantity), 0),
@@ -17,6 +21,7 @@ export const useCartStore = defineStore('cart', {
             } else {
                 this.items.push({ product, quantity: 1 })
             }
+            this.showNotification('Ürün başarıyla sepete eklendi!')
         },
         removeFromCart(product: IProduct) {
             this.items = this.items.filter(i => i.product.id !== product.id)
@@ -29,6 +34,13 @@ export const useCartStore = defineStore('cart', {
         },
         clearCart() {
             this.items = []
+        },
+        showNotification(message: string) {
+            this.notification.message = message
+            this.notification.visible = true
+            setTimeout(() => {
+                this.notification.visible = false
+            }, 3000)
         }
     }
 })

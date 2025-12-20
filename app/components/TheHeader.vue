@@ -107,7 +107,7 @@
         </div>
 
         <!-- SEPET -->
-        <div class="sepet-btn" @click="navigateTo('/cart')">
+        <div class="sepet-btn" @click="router.push('/cart')">
           <AtomIcon name="ri-shopping-bag-3-line" />
           <span class="ml-1">Sepetim</span>
           <span v-if="cartStore.itemCount > 0" class="ml-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">{{ cartStore.itemCount }}</span>
@@ -128,9 +128,11 @@ import MoleculeNotificationCard from '~/components/molecules/NotificationCard.vu
 import { useAuthStore } from '~/stores/authStore'
 import { useCartStore } from '~/stores/cartStore'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
 const cartStore = useCartStore()
+const router = useRouter()
 
 const logo = new URL("../../src/assets/images/logo.png", import.meta.url).href
 const headerBg = new URL("../../src/assets/images/header-bg.jpg", import.meta.url).href
@@ -186,10 +188,10 @@ const handleAuthClick = () => {
         // Maybe go to profile or logout? For now toggle logout for demo or go to home
          if(confirm('Çıkış yapılsın mı?')) {
              authStore.logout()
-             navigateTo('/')
+             router.push('/')
          }
     } else {
-        navigateTo('/login')
+        router.push('/login')
     }
 }
 </script>

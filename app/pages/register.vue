@@ -1,6 +1,11 @@
 <template>
   <div class="register-page">
 
+    <!-- LOGO -->
+    <div class="logo-wrapper">
+      <img :src="logo" alt="Toyzz Shop Logo" class="logo" />
+    </div>
+
     <!-- FORM KARTI -->
     <div class="register-card">
 
@@ -89,6 +94,8 @@ import AtomCheckbox from "@/components/atoms/Checkbox.vue";
 import { useAuthStore } from '~/stores/authStore'
 
 const authStore = useAuthStore()
+
+const logo = new URL("../../src/assets/images/logo.png", import.meta.url).href
 
 const firstName = ref('')
 const lastName = ref('')

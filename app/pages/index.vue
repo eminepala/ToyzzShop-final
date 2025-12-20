@@ -53,7 +53,5 @@ onMounted(() => {
 
 const handleAddToCart = (product: IProduct) => {
   cartStore.addToCart(product)
-  // Simple aleart for now
-  alert('Added to cart!')
 }
 </script>

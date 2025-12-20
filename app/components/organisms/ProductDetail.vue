@@ -106,7 +106,7 @@ const handleAddToCart = () => {
     quantity: 1
   };
   cartStore.addToCart(product);
-  alert("Ürün sepete eklendi!");
+  // alert removed
 };
 </script>
 
